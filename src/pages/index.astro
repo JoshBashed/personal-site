@@ -1,0 +1,188 @@
+---
+import { GraduationCap, Mail, MapPin, PersonStanding } from "lucide-react";
+import { BlueskyIcon } from "../components/BlueskyIcon";
+import { BlurInDiv } from "../components/BlurInDiv";
+import { GitHubIcon } from "../components/GitHubIcon";
+import { LinkedInIcon } from "../components/LinkedInIcon";
+import { LiquidText } from "../components/LiquidText";
+import { NoBotEmail } from "../components/NoBotEmail";
+import Page from "../components/Page.astro";
+import { ProjectLinkCard } from "../components/ProjectLinkCard";
+import { createSquircle } from "../utilities/squircle";
+
+const EMAIL_DATA = [
+    "36882812:17:45827357",
+    "16548223:17:23624231",
+    "3151833:17:49047217",
+    "20913230:17:33844829",
+    "29283835:17:30372871",
+    "25825570:17:40004711",
+    "29481580:17:58249447",
+    "2257328:17:31670273",
+];
+
+const JSON_EMAIL_DATA = (() => {
+    return EMAIL_DATA.map((item) => {
+        const [cipherText, e, n] = item.split(":");
+        return { cipherText, e: parseInt(e, 10), n: parseInt(n, 10) };
+    });
+})();
+
+const carouselItems = [
+    {
+        title: "Canvas-TRMNL",
+        description:
+            "A public plugin for TRMNL devices that displays todo assignments from Canvas LMS. I created this. 60 daily active users.",
+        image_url: "/showcase-images/canvas-trmnl.webp",
+        href: "https://canvas-trmnl.bashed.cx/",
+    },
+    {
+        title: "Whisky",
+        description:
+            "An app to run Windows on Mac with the power of GPTK. I contributed to the client and wine fork. 15k+ users.",
+        image_url: "/showcase-images/whisky.webp",
+        href: "https://getwhisky.app/",
+    },
+];
+---
+
+<Page
+    title="Josh"
+    description="Josh, a software engineer, ML engineer, and designer."
+    padding={false}
+    limitWidth={false}
+>
+    <BlurInDiv
+        className="flex flex-col-reverse md:flex-row gap-4 w-full md:justify-between md:items-center max-w-4xl px-4 sm:px-8 md:px-16"
+        client:load
+    >
+        <div class="flex flex-col gap-2">
+            <h1 class="text-3xl font-bold font-display">
+                i'm <LiquidText state="shown" text="josh" client:load />.
+            </h1>
+            <p class="text-lg">
+                a software engineer, machine learning engineer, and designer.
+            </p>
+        </div>
+        <img
+            src="/profile.jpg"
+            alt="Profile picture of Josh"
+            class="w-24 h-24 object-cover"
+            loading="lazy"
+            style={{
+                clipPath: `path("${createSquircle({
+                    width: 96,
+                    height: 96,
+                    cornerRadius: 24,
+                    cornerSmoothing: 0.6,
+                })}")`,
+            }}
+        />
+    </BlurInDiv>
+    <BlurInDiv
+        className="flex flex-col gap-4 w-full max-w-4xl px-4 sm:px-8 md:px-16"
+        delay={200}
+        client:load
+    >
+        <h2 class="text-2xl text-on-surface font-bold font-display">about</h2>
+        <ul class="flex flex-col gap-2">
+            <li class="flex items-center gap-2">
+                <MapPin className="w-5 h-5" />
+                san francisco, ca, usa
+            </li>
+            <li class="flex items-center gap-2">
+                <PersonStanding className="w-5 h-5" />
+                teenager
+            </li>
+            <li class="flex items-center gap-2">
+                <GraduationCap className="w-5 h-5" />
+                high school student
+            </li>
+        </ul>
+    </BlurInDiv>
+
+    <BlurInDiv
+        className="flex flex-col gap-4 w-full items-center"
+        delay={400}
+        client:load
+    >
+        <h2
+            class="text-2xl text-on-surface font-bold font-display w-full max-w-4xl px-4 sm:px-8 md:px-16"
+        >
+            showcase
+        </h2>
+        <div
+            class="w-full flex overflow-x-auto overflow-y-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+            <div
+                class="w-min flex flex-row content-start gap-8 [--gutter:4] [--card:var(--container-md)] sm:[--gutter:8] md:[--gutter:16] md:[--card:var(--container-lg)] lg:[--card:var(--container-xl)] [--padding-size:max(0px,(100vw-var(--container-4xl)))] [--width:calc(min(var(--container-4xl),100vw)-var(--spacing)*var(--gutter)*2)] [--card-size:min(calc(100vw-var(--spacing)*32),var(--card))] [--padding:calc(var(--padding-size)/2+var(--spacing)*var(--gutter))] pl-[var(--padding)] pr-[calc(var(--padding)+var(--width)-var(--card-size))]"
+            >
+                {
+                    carouselItems.map((item) => (
+                        <ProjectLinkCard
+                            title={item.title}
+                            description={item.description}
+                            imageSrc={item.image_url}
+                            link={item.href}
+                            className="w-[var(--card-size)]"
+                            client:load
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </BlurInDiv>
+
+    <BlurInDiv
+        className="flex flex-col gap-4 w-full max-w-4xl px-4 sm:px-8 md:px-16"
+        delay={600}
+        client:load
+    >
+        <h2 class="text-2xl text-on-surface font-bold font-display">
+            links and contacts
+        </h2>
+        <ul class="flex flex-col gap-2">
+            <li class="flex items-center gap-2">
+                <GitHubIcon className="w-5 h-5" />
+                <a
+                    href="https://github.com/JoshuaBrest/"
+                    class="text-indigo-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+            </li>
+            <li class="flex items-center gap-2">
+                <LinkedInIcon className="w-5 h-5" />
+                <a
+                    href="https://www.linkedin.com/in/bjosh/"
+                    class="text-indigo-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </li>
+            <li class="flex items-center gap-2">
+                <BlueskyIcon className="w-5 h-5" />
+                <a
+                    href="https://bsky.app/profile/josh.bashed.sh/"
+                    class="text-indigo-400 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Bluesky
+                </a>
+            </li>
+            <li class="flex items-center gap-2">
+                <Mail
+                    className="w-5 h-5"
+                    aria-label="Email"
+                    client:only="react"
+                />
+                <NoBotEmail email={JSON_EMAIL_DATA} client:only />
+            </li>
+        </ul>
+    </BlurInDiv>
+</Page>

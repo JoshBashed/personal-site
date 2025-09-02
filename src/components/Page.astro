@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import { InjectedCss } from './InjectedCss';
+import { LiquidBorder } from './LiquidBorder';
+
+const { title, description, limitWidth = true, padding = true } = Astro.props;
+---
+
+<html
+    lang="en"
+    class="w-full h-full bg-surface [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#1c1917" />
+
+        <meta name="og:type" content="website" />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
+        <meta name="og:image" content="/og-image.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="/og-image.png" />
+
+        <link rel="icon" href="/bashed.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <InjectedCss client:load />
+    </head>
+    <body
+        class={`w-full min-h-full flex justify-center overflow-x-clip bg-surface text-on-surface-variant font-sans ${padding ? "p-4 sm:p-8 md:p-16" : "py-8 md:py-16"}`}
+    >
+        <div
+            class={`w-full flex flex-col gap-8 pb-32 ${limitWidth ? "max-w-4xl" : "items-center"}`}
+        >
+            <slot />
+        </div>
+        <LiquidBorder
+            className="flex-none w-full h-16 md:h-32 fixed top-0 left-0 traslate-x-1/2 pointer-events-none"
+            steps={8}
+            blur={8}
+        />
+        <LiquidBorder
+            className="flex-none w-full h-16 md:h-32 fixed bottom-0 left-0 traslate-x-1/2 pointer-events-none"
+            steps={8}
+            blur={8}
+            reverse
+        />
+    </body>
+</html>
