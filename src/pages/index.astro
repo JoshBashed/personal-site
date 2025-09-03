@@ -1,54 +1,54 @@
 ---
-import { GraduationCap, Mail, MapPin, PersonStanding } from "lucide-react";
-import { BlueskyIcon } from "../components/BlueskyIcon";
-import { BlurInDiv } from "../components/BlurInDiv";
-import { GitHubIcon } from "../components/GitHubIcon";
-import { LinkedInIcon } from "../components/LinkedInIcon";
-import { LiquidText } from "../components/LiquidText";
-import { NoBotEmail } from "../components/NoBotEmail";
-import Page from "../components/Page.astro";
-import { ProjectLinkCard } from "../components/ProjectLinkCard";
-import { createSquircle } from "../utilities/squircle";
+import { GraduationCap, Mail, MapPin, PersonStanding } from 'lucide-react';
+import { BlueskyIcon } from '../components/BlueskyIcon';
+import { BlurInDiv } from '../components/BlurInDiv';
+import { GitHubIcon } from '../components/GitHubIcon';
+import { LinkedInIcon } from '../components/LinkedInIcon';
+import { LiquidText } from '../components/LiquidText';
+import { NoBotEmail } from '../components/NoBotEmail';
+import Page from '../components/Page.astro';
+import { ProjectLinkCard } from '../components/ProjectLinkCard';
+import { createSquircle } from '../utilities/squircle';
 
 const EMAIL_DATA = [
-    "36882812:17:45827357",
-    "16548223:17:23624231",
-    "3151833:17:49047217",
-    "20913230:17:33844829",
-    "29283835:17:30372871",
-    "25825570:17:40004711",
-    "29481580:17:58249447",
-    "2257328:17:31670273",
+    '36882812:17:45827357',
+    '16548223:17:23624231',
+    '3151833:17:49047217',
+    '20913230:17:33844829',
+    '29283835:17:30372871',
+    '25825570:17:40004711',
+    '29481580:17:58249447',
+    '2257328:17:31670273',
 ];
 
 const JSON_EMAIL_DATA = (() => {
     return EMAIL_DATA.map((item) => {
-        const [cipherText, e, n] = item.split(":");
+        const [cipherText, e, n] = item.split(':');
         return { cipherText, e: parseInt(e, 10), n: parseInt(n, 10) };
     });
 })();
 
 const carouselItems = [
     {
-        title: "Canvas-TRMNL",
+        title: 'Canvas-TRMNL',
         description:
-            "A public plugin for TRMNL devices that displays todo assignments from Canvas LMS. I created this. 60 daily active users.",
-        image_url: "/showcase-images/canvas-trmnl.webp",
-        href: "https://canvas-trmnl.bashed.cx/",
+            'A public plugin for TRMNL devices that displays todo assignments from Canvas LMS. I created this. 60 daily active users.',
+        image_url: '/showcase-images/canvas-trmnl.webp',
+        href: 'https://canvas-trmnl.bashed.cx/',
     },
     {
-        title: "Whisky",
+        title: 'Whisky',
         description:
-            "An app to run Windows on Mac with the power of GPTK. I contributed to the client and wine fork. 15k+ users.",
-        image_url: "/showcase-images/whisky.webp",
-        href: "https://getwhisky.app/",
+            'An app to run Windows on Mac with the power of GPTK. I contributed to the client and wine fork. 15k+ users.',
+        image_url: '/showcase-images/whisky.webp',
+        href: 'https://getwhisky.app/',
     },
 ];
 ---
 
 <Page
-    title="Josh"
-    description="Josh, a software engineer, ML engineer, and designer."
+    title="Josh Bashed"
+    description="Josh Bashed, a software engineer, ML engineer, and designer."
     padding={false}
     limitWidth={false}
 >
@@ -58,7 +58,7 @@ const carouselItems = [
     >
         <div class="flex flex-col gap-2">
             <h1 class="text-3xl font-bold font-display">
-                i'm <LiquidText state="shown" text="josh" client:load />.
+                i'm <LiquidText state="shown" text="joshbashed" client:load />.
             </h1>
             <p class="text-lg">
                 a software engineer, machine learning engineer, and designer.
